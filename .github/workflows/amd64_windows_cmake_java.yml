@@ -40,6 +40,13 @@ jobs:
           --config ${{ matrix.cmake.config }}
           --target ${{ matrix.cmake.build_target }}
           -v -j2
+      - name: Test bis
+        run: >
+          cd build &&
+          ctest
+          -V
+          -C ${{ matrix.cmake.config }}
+          --output-on-failure
       - name: Test
         run: >
           cmake --build build
